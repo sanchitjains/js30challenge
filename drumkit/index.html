@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whiplash !</title>
+    <link rel="stylesheet" href="./drum-kit.css">
+</head>
+<body>
+        <div id="consert">
+            <h1>Rock & Roll</h1>
+            <div id="drumset">
+                <div data-key="65">
+                    <kbd data-key="65">A</kbd>
+                    <span data-key="65">RIM</span>
+                </div>
+                <div data-key="83">
+                    <kbd data-key="83">S</kbd>
+                    <span data-key="83">CLS HITHAT</span>
+                </div>
+                <div data-key="68">
+                    <kbd data-key="68">D</kbd>
+                    <span data-key="68">OPN HITHAT</span>
+                </div>
+                <div data-key="70">
+                    <kbd data-key="70">F</kbd>
+                    <span data-key="70">SNARE</span>
+                </div>
+                <div data-key="71">
+                    <kbd data-key="71">G</kbd>
+                    <span data-key="71">CLAP</span>
+                </div>
+                <div data-key="72">
+                    <kbd data-key="72">H</kbd>
+                    <span data-key="72">KICK</span>
+                </div>
+                <div data-key="74">
+                    <kbd data-key="74">J</kbd>
+                    <span data-key="74">TOM</span>
+                </div>
+                <div data-key="75">
+                    <kbd data-key="75">K</kbd>
+                    <span data-key="75">CYMBAL</span>
+                </div>
+                <div data-key="76">
+                    <kbd data-key="76">L</kbd>
+                    <span data-key="76">CYMBAL 2</span>
+                </div>
+        </div>
+
+        </div>
+        <audio data-key="65" src="./sounds/3[kb]909-Rim-63.wav.mp3"></audio>
+        <audio data-key="83" src="./sounds/11[kb]909-HiHatClosed-D6.wav.mp3"></audio>
+        <audio data-key="68" src="./sounds/34[kb]909-HiHatOpen-D4.wav.mp3"></audio>
+        <audio data-key="70" src="./sounds/25[kb]606-snare1.wav.mp3"></audio>
+        <audio data-key="71" src="./sounds/31[kb]909-Clap-2.wav.mp3"></audio>
+        <audio data-key="72" src="./sounds/75[kb]606-kick2.wav.mp3"></audio>
+        <audio data-key="74" src="./sounds/94[kb]606-tom3.wav.mp3"></audio>
+        <audio data-key="75" src="./sounds/234[kb]606-cymbal1.wav.mp3"></audio>
+        <audio data-key="76" src="./sounds/259[kb]606-cymbal3.wav.mp3"></audio>
+
+</body>
+</html>
+<script>
+
+
+// for mobile clicks
+        const beat2=function(event){
+        console.log(event.target.attributes[0].value)
+        let sound=document.querySelector(`audio[data-key='${event.target.attributes[0].value}']`);
+        let key=document.querySelector(`div[data-key='${event.target.attributes[0].value}']`);
+        if(!sound) return;
+        
+        key.classList.add('playing');
+        sound.currentTime=0;
+        sound.play();
+
+        
+    }
+    // for keybord ketpress
+    const beat=function(event){
+        let sound=document.querySelector(`audio[data-key='${event.keyCode}']`);
+        let key=document.querySelector(`div[data-key='${event.keyCode}']`);
+        if(!sound) return;
+        
+        key.classList.add('playing');
+        sound.currentTime=0;
+        sound.play();
+
+        
+    }
+    // for removing transition
+    const removeeff=function(event){
+        event.target.classList.remove('playing');
+
+    }
+
+    window.addEventListener("keydown",beat);
+    document.addEventListener("click",beat2);
+    window.addEventListener('transitionend',removeeff);
+
+
+</script>
