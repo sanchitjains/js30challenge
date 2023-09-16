@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>...</title>
+    <link rel="stylesheet" href="./clock.css">
+
+</head>
+<body>
+    <div id="analog">
+        <div id="hour"></div>
+        <div id="min"></div>
+        <div id="sec"></div>
+    </div>
+    
+</body>
+</html>
+<script>
+    function time()
+    {
+        let count=0;
+        return function()
+    {
+
+        let now= new Date();
+        let sec=now.getSeconds();
+        let min=now.getMinutes();
+        let hour=now.getHours();
+        let sechand=document.getElementById("sec");
+        let minhand=document.getElementById("min");
+        let hourhand=document.getElementById("hour");
+        count && sec?sechand.style.transition='1s':sechand.style.transition='0s';
+        count && min?minhand.style.transition='60s':minhand.style.transition='0s';
+        count && hour?hourhand.style.transition='3600s':hourhand.style.transition='0s';
+        count=1;
+        sechand.style.transform=`rotateZ(${(sec*6)+270}deg)`;
+        minhand.style.transform=`rotateZ(${(min*6)+270}deg)`;
+        hourhand.style.transform=`rotateZ(${(hour*30)+270}deg)`;
+
+    }
+    }
+    setInterval(time(),1000);
+</script>

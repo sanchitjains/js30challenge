@@ -1,0 +1,48 @@
+body{
+    background-color: blue;
+}
+#analog
+{
+    position: fixed;
+    top:20%;
+    right:40%;
+    width:20vw;
+    height:20vw;
+    background-color: blueviolet;
+    border: 2vw solid aliceblue;
+    border-radius: 50%;
+}
+#hour
+{
+    position: absolute;
+    top:50%;
+    left:50%;
+    z-index: 2;
+    height:1.2vh;
+    width: 7vw;
+    background-color: aqua;
+    border-radius: 2px;
+    transform-origin: 0;
+}
+#min
+{
+    position: absolute;
+    top:50%;
+    left:50%;
+    z-index: 1;
+    height:1vh;
+    width: 8vw;
+    background-color: greenyellow;
+    transform-origin: 0;
+}
+#sec
+{
+
+    position: absolute;
+    top:50%;
+    left:50%;
+    height:0.7vh;
+    width: 9.5vw;
+    background-color: sandybrown;
+    transform-origin: 0;
+}
